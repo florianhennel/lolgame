@@ -1,31 +1,39 @@
-<MyGrid>
+WindowManager:
+    MainWindow:
+    Classic_game:
+    Ability_game:
+<Classic_game,Ability_game>:
+    Button:
+        id:'back_button'
+        size_hint:0.2,0.1
+        pos_hint: {'top':1}
+
+        text:"Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
 
 
-    name:name
-    last:last
-
-    GridLayout:
-        cols : 1
-        size : root.width-200, root.height-200
-        pos : 100,100
-        GridLayout:
-            cols : 2
-
-            Label:
-                text : 'First Name'
-            TextInput:
-                id: name
-                multiline : False
-
-            Label:
-                text:'Last Name'
-            TextInput:
-                id:last
-                multiline : False
-
+<MainWindow>:
+    name: "main"
+    FloatLayout:
         Button:
+            size_hint:0.5,0.2
+            pos_hint: {'x':0.25,'top':0.8}
+            text:"Classic"
+            on_release:
+                app.root.current = "classic"
+                root.manager.transition.direction = "left"
+        Button:
+            size_hint:0.5,0.2
+            pos_hint: {'x':0.25,'top':0.6}
+            text:"Ability"
+            on_release:
+                app.root.current = "ability"
+                root.manager.transition.direction = "left"
+<Classic_game>:
+    name: "classic"
 
-            text:'Submit'
-            on_press:root.btn()
-
-
+<Ability_game>:
+    name: "ability"
+            
